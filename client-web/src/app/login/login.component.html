@@ -1,0 +1,27 @@
+<app-nav></app-nav>
+<div class="row">
+  <div class="column">
+  </div>
+  <div class="column2">
+    <h1 class="title">AREA</h1>
+    <form (submit)="onSubmit()" [formGroup]="myForm">
+      <mat-form-field class="fullWidth">
+        <input matInput placeholder="Enter your email" formControlName="email" required>
+      </mat-form-field>
+
+      <mat-form-field class="fullWidth">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <div class="center-elem">
+        <button class="button-spacer" mat-raised-button color="warn"><a class="fa fa-google"></a></button>
+        <button (click)="fbLogin()" class="button-spacer" mat-raised-button color="primary"><a class="fa fa-facebook"></a></button>
+        <button class="button-spacer" mat-raised-button color="accent"><a class="fa fa-instagram"></a></button>
+        <button class="button-spacer" mat-raised-button color="primary"><a class="fa fa-twitter"></a></button>
+      </div>
+
+      <button mat-raised-button color="primary" class="fullWidth" type="submit">Sign up</button>
+    </form>
+  </div>
+</div>

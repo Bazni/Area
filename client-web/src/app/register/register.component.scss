@@ -1,0 +1,45 @@
+.row {
+  background-image: url("./../../assets/AuthImg.jpg");
+
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 66%;
+  padding: 10px;
+  height: 96.8ch; /* Should be removed. Only for demonstration */
+}
+
+.column2{
+  background-color: white;
+  flex: 34%;
+  padding: 10px;
+  height: 96.8ch; /* Should be removed. Only for demonstration */
+}
+
+.fullWidth {
+  width: 100%
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.button-spacer {
+  padding: 2%;
+  margin: 4%;
+}
+
+.center-elem {
+  text-align: center;
+}
+.title {
+  text-align: center;
+  font-size: 50px;
+  //color: rgba(250,250,250,0.1);
+}

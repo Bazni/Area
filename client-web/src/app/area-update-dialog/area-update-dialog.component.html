@@ -1,0 +1,13 @@
+<h3 class="card-title"> Action configuration</h3>
+
+  <mat-form-field class="example-full-width"  *ngFor="let conf of area.configAction">
+  <input matInput placeholder="{{conf[0]}}"  [(ngModel)]="area.actionConfig[conf[0]]">
+</mat-form-field>
+
+<h3 class="card-title"> Reaction configuration</h3>
+
+<mat-form-field class="example-full-width" *ngFor="let conf of area.configReaction">
+  <input matInput placeholder="{{conf[0]}}"  [(ngModel)]="area.reactionConfig[conf[0]]">
+</mat-form-field>
+
+<a (click)="update()" class="btn btn-primary btn-round" style="color: white">Update</a>

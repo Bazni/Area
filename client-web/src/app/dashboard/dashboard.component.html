@@ -1,0 +1,63 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div  id="{{service.uuid}}" *ngFor="let service of services; let i = index"class="col-lg-12 col-md-6 col-sm-6">
+              <div class="card card-stats" *ngIf="service.name != 'Email'">
+                  <div class="card-header card-header-warning card-header-icon">
+                      <div class="card-icon">
+                        <img src="../../assets/{{service.name}}.png" style="max-width: 60px; ">
+                      </div>
+                      <p class="card-category">{{service.description}}</p>
+                      <h3 class="card-title">{{service.name}}
+                      </h3>
+                  </div>
+                <div class="container-fluid">
+                  <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6"  *ngFor="let area of service.areas; let j = index">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                      <div class="card-icon">
+                        <i class="material-icons">store</i>
+                      </div>
+                      <button mat-raised-button type="button" (click)="updateArea(area)" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button mat-raised-button type="button" (click)="removeArea(area.uuid, i, j)" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                        <i class="material-icons">close</i>
+                      </button>
+                      <div *ngFor="let conf of area.configAction">
+                        <p class="card-category">{{conf[0]}}</p>
+                        <h3 class="card-title">{{conf[1]}}</h3>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="stats">
+                        <i class="material-icons">email</i> send email :
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6" (click)="openDialog(service.uuid)">
+                  <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                      <div class="card-icon">
+                        <i class="material-icons">add</i>
+                      </div>
+                      <p class="card-category"></p>
+                      <h3 class="card-title">Ajouter un area</h3>
+                    </div>
+
+                  </div>
+                </div>
+
+                  </div>
+                </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+          </div>
+      </div>

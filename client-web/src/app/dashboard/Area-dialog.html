@@ -1,0 +1,59 @@
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup" *ngIf="Actions && Actions.length > 0">
+    <form [formGroup]="firstFormGroup">
+
+      <ng-template matStepLabel>Choose an action</ng-template>
+
+      <mat-form-field *ngIf="Actions">
+        <input type="text" placeholder="Actions" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" required>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='setVariable($event.option.value)' >
+          <mat-option *ngFor="let action of Actions" [value]="action.name">
+            {{action.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field *ngFor="let variable of variables">
+        <input  matInput placeholder="{{variable[0]}}" formControlName="{{variable[0]}}" [(ngModel)]="actionSelect.config[variable[0]]" required>
+      </mat-form-field>
+
+      <div >
+        <button  mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" *ngIf="Reactions">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Choose your reaction</ng-template>
+
+      <mat-form-field *ngIf="Reactions">
+        <input type="text" placeholder="Reactions" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" required>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='setReactionVariable($event.option.value)' >
+          <mat-option *ngFor="let reaction of Reactions" [value]="reaction.name">
+            {{reaction.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field *ngFor="let reactionvariable of reactionvariables ">
+        <input  matInput placeholder="{{reactionvariable[0]}}" formControlName="{{reactionvariable[0]}}" [(ngModel)]="reactionSelect.config[reactionvariable[0]]" required>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="create" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="createArea()">Done</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

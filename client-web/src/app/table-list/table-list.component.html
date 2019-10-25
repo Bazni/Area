@@ -1,0 +1,67 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title mt-0"> User List </h4>
+                      <p class="card-category"> Here you can list existing user and modify their informations</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                  <th>
+                                      UUID
+                                  </th>
+                                  <th>
+                                      FirstName
+                                  </th>
+                                  <th>
+                                      LastName
+                                  </th>
+                                  <th>
+                                      Email
+                                  </th>
+                                  <th>
+                                      Role
+                                  </th>
+                                  <th>
+                                    Action
+                                </th>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of users; let i = index">
+                                      <td>
+                                        {{item.uuid}}
+                                      </td>
+                                      <td>
+                                        {{item.firstName}}
+                                      </td>
+                                      <td>
+                                        {{item.lastName}}
+                                      </td>
+                                      <td>
+                                        {{item.email}}
+                                      </td>
+                                      <td>
+                                        {{item.role}}
+                                      </td>
+                                      <td class="td-actions">
+                                        <button (click)="modifyUser(item.uuid)" mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button (click)="deleteUser(item.uuid)" mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

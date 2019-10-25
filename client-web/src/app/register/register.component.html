@@ -1,0 +1,50 @@
+<app-nav></app-nav>
+<div class="row">
+  <div class="column">
+  </div>
+  <div class="column2">
+    <h1 class="title">AREA</h1>
+    <form (ngSubmit)="onSubmit()"  [formGroup]="myForm">
+    <mat-form-field class="fullWidth">
+      <input matInput placeholder="Prenom" formControlName="firstName" required>
+      <mat-error *ngIf="myForm.hasError('required', 'firstName')">Please enter your first name</mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field class="fullWidth">
+      <input matInput placeholder="Nom" formControlName="lastName" required>
+      <mat-error *ngIf="myForm.hasError('required', 'lastName')">Please enter your last name</mat-error>
+    </mat-form-field>
+      <mat-form-field class="fullWidth">
+        <input matInput placeholder="Enter your email" formControlName="email" required>
+        <mat-error *ngIf="f.email.errors && f.email.errors.email">Email must be a valid email address</mat-error>
+        <mat-error *ngIf=" f.email.errors && f.email.errors.required">email is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="fullWidth">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="myForm.hasError('required', 'password')">Please enter your password</mat-error>
+        <mat-error *ngIf="myForm.hasError('minlength', 'password')">Password must be at least 6 characters</mat-error>
+
+      </mat-form-field>
+
+    <mat-form-field class="fullWidth">
+      <input matInput placeholder="Confirm your password" [type]="hide ? 'password' : 'text'" formControlName="passwordConfirm"  [errorStateMatcher]="matcher"   required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="myForm.hasError('notSame')">Passwords do not match</mat-error>
+
+    </mat-form-field>
+
+
+    <div class="center-elem">
+      <button class="button-spacer"mat-raised-button color="warn"><a class="fa fa-google"></a></button>
+      <button class="button-spacer" mat-raised-button color="primary"><a class="fa fa-facebook"></a></button>
+      <button class="button-spacer" mat-raised-button color="accent"><a class="fa fa-instagram"></a></button>
+      <button class="button-spacer" mat-raised-button color="primary"><a class="fa fa-twitter"></a></button>
+    </div>
+
+    <button mat-raised-button color="primary" class="fullWidth" type="submit">Sign up</button>
+    </form>
+  </div>
+</div>

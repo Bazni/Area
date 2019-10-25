@@ -1,0 +1,53 @@
+version: '3.0' # specify docker-compose version
+# Define the services/ containers to be run
+services:
+
+  server:
+    build: ./server # specify the directory of the server Dockerfile
+    container_name: server
+    volumes:
+      - /usr/src/app/node_modules
+      - ./server:/usr/src/app/
+    ports:
+      - "8080:8080" # specify port forwarding
+    links:
+      - database # link this service to the database service
+    depends_on:
+      - database # require database service
+    environment:
+      DATABASE_HOST: database
+  ###################################################################
+  client_web:
+    build: ./client-web # specify the directory of the client Dockerfile
+    container_name: client_web
+    volumes:
+      - ./client-web:/usr/src/app/web/ #./client-web
+      - /usr/src/app/web/node_modules
+    ports:
+    - "8081:8081" # specify port forwarding
+    depends_on:
+      - server
+      - mobile_user
+#######################################################################
+  database:
+    image: postgres:11.0 # using postgres docker image
+    container_name: database
+    ports:
+      - "5432:5432" # specify port forwarding
+    environment:
+      POSTGRES_USER: area_admin
+      POSTGRES_PASSWORD: area_admin_pass
+      POSTGRES_DB: area
+#######################################################################
+  mobile_user:
+    build: ./mobile_user
+    container_name: mobile_user
+    command: ./gradlew assembleRelease #react-native run-android --port=8088
+    #command: expo-cli start --tunnel
+    volumes:
+      - ./mobile_user:/usr/src/app/mobile/ #./mobile_user
+    ports:
+      - 8088:8088
+
+volumes:
+    data-volumes:

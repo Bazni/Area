@@ -1,0 +1,12 @@
+
+-> add the following content to the ./ios folder :
+   - Bolts.framework
+   - FBSDKCoreKit.framework
+   - FBSDKLoginKit.framework
+   - FBSDKShareKit.framework
+   - FacebookSDK/
+
+-> open ios/mobile_user.xcodeproj
+-> click on Librairies/RTCFBSDK.xcodeproj
+-> in "build settings" search for "Framework search path"
+-> replace "$(HOME)/Documents/FacebookSDK" by "$(PROJECT_DIR)/../../../ios/FacebookSDK"

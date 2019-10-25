@@ -1,0 +1,46 @@
+<div class="col-md-12">
+  <div class="card">
+      <div class="card-header card-header-danger">
+          <h4 class="card-title">Edit Profile</h4>
+          <p class="card-category">Complete your profile</p>
+      </div>
+      <div class="card-body">
+          <form (ngSubmit)="updateUser()" *ngIf="userUpdate">
+            <div class="row">
+                  <div class="col-md-5">
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email address" type="email"  [(ngModel)]="userUpdate.email" name="email" >
+                      </mat-form-field>
+                  </div>
+                <mat-checkbox  [(ngModel)]="isAdmin" name="admin">Administrator</mat-checkbox>
+              </div>
+            <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="First Name" type="text" [(ngModel)]="userUpdate.firstName" name="firstname">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Last Name" type="text" [(ngModel)]="userUpdate.lastName" name="lastName">
+                    </mat-form-field>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Phone" type="tel" [(ngModel)]="userUpdate.phone" name="phone">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Photo Url" type="text" [(ngModel)]="userUpdate.photoUrl" name="photoUrl">
+                    </mat-form-field>
+                  </div>
+              </div>
+              <button (click)="updateUser()" mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+              <div class="clearfix"></div>
+          </form>
+      </div>
+  </div>
+</div>
