@@ -8,10 +8,10 @@
     },
     "dependencies": {
         "react": "16.6.3",
-        "react-native": "^0.58.6",
+        "react-native": "^0.70.4",
         "react-native-button": "^2.3.0",
         "react-native-cli": "^2.0.1",
-        "react-native-fbsdk": "^0.8.0",
+        "react-native-fbsdk": "^3.0.0",
         "react-native-gesture-handler": "^1.0.15",
         "react-native-super-grid": "^3.0.3",
         "react-navigation": "^3.3.2"
